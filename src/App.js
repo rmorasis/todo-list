@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { BsPlusSquareFill } from "react-icons/bs";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function TodoList() {
+  const [todoList, setTodoList] = useState([])
+  console.log(todoList)
+  function AddTodo(){
+    setTodoList(["Rebeca", "Impaciente"])
+  }
+  function DisplayTodo(){
+    for (let i in todoList) { 
+      return <li>{todoList[i]}</li>
+      }
+  } 
+return (
+  <div>
+    <form>
+       <h1>TodoList</h1>
+       <input type = "text"/>
+  {/* <button className='data-testid="eval-add-todo-buttontem'>Add item</button> */}
+  <BsPlusSquareFill className='data-testid="eval-add-todo-buttontem' onClick={AddTodo}/>
+    </form>
+    <ul>
+     <DisplayTodo />
+    </ul>
+    <div data-testid="email">youremail@email.com</div>
+  </div>
+
+);
+
+
 }
 
-export default App;
+export default TodoList;
